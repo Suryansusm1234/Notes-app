@@ -6,7 +6,7 @@ const Addnote = (props) => {
     <div className='fixed inset-0 flex justify-center items-center backdrop-brightness-50 '>
     <div className='bg-white  p-5 rounded-2xl shadow-2xl '>
       <div className='flex justify-between mb-3'>
-        <button className='flex justify-center items-center gap-1.5 bg-cyan-500 pl-2 pr-2 pt-1 pb-1 rounded-3xl cursor-pointer '>
+        <button className='flex justify-center items-center gap-1.5 bg-cyan-500 pl-2 pr-2 pt-1 pb-1 rounded-3xl cursor-pointer hover:bg-cyan-400 '>
         <CirclePlus  />
         Add
         </button>
