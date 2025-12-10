@@ -7,12 +7,13 @@ const App = () => {
   return (
     <>
       <Navbar />
-      {addNote?<Addnote/>:""}
-      
+      {addNote?
+      <Addnote setaddNote={setaddNote}/>
+     
+     
+: ""}
       <button className='bg-gray-700 text-white cursor-pointer' onClick={() => {
         setaddNote(true)}}>Add Notes</button>
-         <button className='bg-gray-700 text-white cursor-pointer ml-2' onClick={() => {
-        setaddNote(false)}}>Remove</button>
     </>
     
   )
