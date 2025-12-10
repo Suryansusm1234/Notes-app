@@ -38,7 +38,7 @@ const Navbar = () => {
       </div>
 
       <div className="profile flex items-center gap-2">
-        <div className="max-w-[80px] sm:max-w-[120px]">
+        <div className="max-w-20 sm:max-w-[120px]">
           <p className="font-medium truncate">Suryansu</p>
         </div>
 
