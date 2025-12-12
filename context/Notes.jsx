@@ -1,15 +1,20 @@
-import React from 'react'
+
+import { useEffect } from 'react'
 import { createContext } from 'react'
 import { useState } from 'react'
 
 export const RecentNotes = createContext()
-const recent = []
-localStorage.setItem("recentnotes", JSON.stringify(recent))
+const saved = JSON.parse(localStorage.getItem("recentnotes")) || [];
 const Notes = (props) => {
-    const [change, setchange] = useState(recent)
+  const [notes, setNotes] = useState(saved);
+    useEffect(() => {
+  localStorage.setItem("recentnotes", JSON.stringify(notes));
+}, [notes]);
+
+    
   return (
     <div>
-        <RecentNotes.Provider value={{recent , setchange}}>
+        <RecentNotes.Provider value={{notes , setNotes}}>
             {props.children}
         </RecentNotes.Provider>
         

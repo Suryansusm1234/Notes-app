@@ -3,18 +3,20 @@ import { useState } from 'react';
 import dayjs from 'dayjs';
 import { useContext } from 'react';
 import { RecentNotes } from '../context/Notes';
+import { v4 as uuidv4 } from 'uuid';
   const Addnote = (props) => {
-  const {recent , setchange } = useContext(RecentNotes)
+  const {notes , setNotes } = useContext(RecentNotes)
   function handlesubmit(e) {
     e.preventDefault()
-    const time =dayjs().format('DD/MM/YYYY HH:mm:ss')
-    recent.push({
+    const time =dayjs().format('DD/MM/YYYY HH:mm:ss dddd')
+    notes.push({
       title : title,
       content : content,
-      created : time
+      id:uuidv4(),
+      date:dayjs().format('DD/MM/YYYY'),
+      time:dayjs().format('HH:mm:ss dddd')
     })
-    localStorage.setItem("recentnotes", JSON.stringify(data))
-    console.log(data);
+    setNotes(notes);
     
     props.setaddNote(false)
   }
@@ -23,7 +25,9 @@ import { RecentNotes } from '../context/Notes';
   return (
     <div className='fixed inset-0 flex justify-center items-center backdrop-brightness-50 '>
     <div className='bg-white  p-5 rounded-2xl shadow-2xl '>
-      <form action="" onSubmit={handlesubmit}>
+      <form action="" onSubmit={(e)=>{
+        handlesubmit(e)
+      }}>
       <div className='flex justify-between mb-3'>
         <button className='flex justify-center items-center gap-1.5 bg-cyan-500 pl-2 pr-2 pt-1 pb-1 rounded-3xl cursor-pointer hover:bg-cyan-400' type='submit'>
         <CirclePlus  />
@@ -38,14 +42,14 @@ import { RecentNotes } from '../context/Notes';
       <h2 className='mb-2 text-2xl underline'>Create A New Note</h2>
        
         <div>
-        <input type="text" placeholder='Enter the title' className='border pl-1 rounded' value={title} onChange={(e)=>{
+        <input type="text" placeholder='Enter the title' required className='border pl-1 rounded' value={title} onChange={(e)=>{
           setitle(e.target.value)
           
-        }}/>
+        }} />
         </div>
         <div className='mt-2'>
           <h3 className='text-xl'>Note</h3>
-          <textarea name="" id=""className='border rounded  w-xl min-h-20 ' value={content} onChange={(e)=>{
+          <textarea name="" id=""className='border rounded  w-xl min-h-20 pl-2 ' value={content} onChange={(e)=>{
             setcontent(e.target.value)
             
           }}></textarea>
