@@ -28,7 +28,7 @@ const Home = () => {
           })}
         </div>
         <div onClick={()=>{
-          console.log(addNote);
+        
           
         }}>
           <Newnote setaddNote={setaddNote} />

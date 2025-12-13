@@ -9,7 +9,6 @@ import Home from '../pages/Home';
 
 const App = () => {
   const { notes } = useContext(RecentNotes)
-  console.log(notes);
 
   return (
     <>
