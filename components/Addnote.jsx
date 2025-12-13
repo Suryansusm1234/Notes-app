@@ -8,15 +8,15 @@ import { v4 as uuidv4 } from 'uuid';
   const {notes , setNotes } = useContext(RecentNotes)
   function handlesubmit(e) {
     e.preventDefault()
-    const time =dayjs().format('DD/MM/YYYY HH:mm:ss dddd')
-    notes.push({
+    const data =
+    {
       title : title,
       content : content,
       id:uuidv4(),
       date:dayjs().format('DD/MM/YYYY'),
       time:dayjs().format('HH:mm:ss dddd')
-    })
-    setNotes(notes);
+    }
+     setNotes(prevFolder => [data,...prevFolder]);
     
     props.setaddNote(false)
   }

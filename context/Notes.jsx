@@ -5,19 +5,25 @@ import { useState } from 'react'
 
 export const RecentNotes = createContext()
 const saved = JSON.parse(localStorage.getItem("recentnotes")) || [];
+const savedfolder = JSON.parse(localStorage.getItem("folder")) || [];
 const Notes = (props) => {
   const [notes, setNotes] = useState(saved);
-    useEffect(() => {
-  localStorage.setItem("recentnotes", JSON.stringify(notes));
-}, [notes]);
+  const [folder, setfolder] = useState(savedfolder)
+  useEffect(() => {
+    localStorage.setItem("recentnotes", JSON.stringify(notes));
+  }, [notes]);
+  
+  useEffect(() => {
+    localStorage.setItem("folder", JSON.stringify(folder));
+  }, [folder]);
 
-    
+
   return (
     <div>
-        <RecentNotes.Provider value={{notes , setNotes}}>
-            {props.children}
-        </RecentNotes.Provider>
-        
+      <RecentNotes.Provider value={{ notes, setNotes, folder, setfolder }}>
+        {props.children}
+      </RecentNotes.Provider>
+
     </div>
   )
 }

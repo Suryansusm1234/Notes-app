@@ -13,24 +13,23 @@ const App = () => {
 
   return (
     <>
-    
+
       <Navbar />
       <div className='flex '>
-      <Leftsidebar />
-      
+        <Leftsidebar />
+
         <div className='bg-gray-200  p-3 rounded-xl  w-[90vw]'>
-       
-      <Routes>
-        <Route index element={<Home/>}/>
-      <Route path='viewall' element={<Viewall/>} />
-      </Routes>
-    
+          <Routes>
+            <Route index element={<Home />} />
+            <Route path='viewall' element={<Viewall />} />
+          </Routes>
+
+        </div>
       </div>
-      </div>
-      
+
     </>
 
-)
+  )
 }
 
 export default App

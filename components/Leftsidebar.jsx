@@ -1,22 +1,35 @@
-import { FolderPlus, Trash2,ArrowRight, ArrowLeft } from 'lucide-react';
+import { FolderPlus, Trash2, ArrowRight, ArrowLeft } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Addfolder from './Addfolder';
 const Leftsidebar = () => {
   const [clicked, setclicked] = useState(false)
-  function clickedHandler(){
-    if(!clicked){
-       setclicked(true);
-    }else{
+  const [Showfolder, setshowfolder] = useState(false)
+  function clickedHandler() {
+    if (!clicked) {
+      setclicked(true);
+    } else {
       setclicked(false);
     }
-   
+
+  }
+
+  function toggleshowfolder(){
+    if(Showfolder){
+      console.log(Showfolder);
+      
+      setshowfolder(false)
+    }else{
+      setshowfolder(true)
+    }
   }
   return (
+    <>
+    {Showfolder? <Addfolder setshowfolder={setshowfolder}/>: ""}
     <aside className="h-screen">
       <nav className="h-full flex flex-col bg-white   p-5 mr-3">
         <div className="flex-1 px-3">
-
-          <button className='flex justify-center items-center gap-2 cursor-pointer'>
+          <button className='flex justify-center items-center gap-2 cursor-pointer' onClick={toggleshowfolder}>
             <FolderPlus size="1.5rem" />
             <p className='whitespace-nowrap'>Add New</p>
           </button>
@@ -32,22 +45,23 @@ const Leftsidebar = () => {
             </li>
           </ul>
           <div className='flex items-center gap-3 m-2 mt-5'>
-          <Trash2 color='grey'/>
-          <p>Trash</p>
+            <Trash2 color='grey' />
+            <p>Trash</p>
           </div>
-          {clicked?<button className='flex gap-1 rounded-2xl p-1 items-center cursor-pointer hover:bg-gray-400'onClick={clickedHandler}>
-            <ArrowLeft color='gray'/>
+          {clicked ? <button className='flex gap-1 rounded-2xl p-1 items-center cursor-pointer hover:bg-gray-400' onClick={clickedHandler}>
+            <ArrowLeft color='gray' />
             <Link to="/"><p className='whitespace-nowrap'>Home</p></Link>
-          </button>:
-          <button className='flex gap-1 rounded-2xl p-1 items-center cursor-pointer hover:bg-gray-400'onClick={clickedHandler}>
-            <Link to="/viewall"><p className='whitespace-nowrap'>View all Notes</p></Link>
-            <ArrowRight color='gray'/>
-          </button>
+          </button> :
+            <button className='flex gap-1 rounded-2xl p-1 items-center cursor-pointer hover:bg-gray-400' onClick={clickedHandler}>
+              <Link to="/viewall"><p className='whitespace-nowrap'>View all Notes</p></Link>
+              <ArrowRight color='gray' />
+            </button>
           }
         </div>
 
       </nav>
     </aside>
+    </>
   )
 }
 

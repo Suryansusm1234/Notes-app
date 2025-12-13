@@ -13,7 +13,7 @@ const Home = () => {
     {addNote ?
         <Addnote setaddNote={setaddNote} /> : ""}
       <h1 className='text-2xl font-semibold pl-5'>Recent Notes</h1>
-      <div className=' flex justify-center gap-7 items-center p-4'>
+      <div className=' flex justify-evenly gap-7 items-center p-4'>
         <div className=' flex gap-2 overflow-hidden '>
           {notes.map((e, index) => {
             {

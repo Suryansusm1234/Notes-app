@@ -1,5 +1,4 @@
 import { Pencil } from 'lucide-react'
-import React from 'react'
 const Newnote = (props) => {
   return (
     <div className=''>
