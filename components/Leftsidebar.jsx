@@ -1,5 +1,16 @@
-import { FolderPlus, Trash2 } from 'lucide-react';
+import { FolderPlus, Trash2,ArrowRight, ArrowLeft } from 'lucide-react';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 const Leftsidebar = () => {
+  const [clicked, setclicked] = useState(false)
+  function clickedHandler(){
+    if(!clicked){
+       setclicked(true);
+    }else{
+      setclicked(false);
+    }
+   
+  }
   return (
     <aside className="h-screen">
       <nav className="h-full flex flex-col bg-white   p-5 mr-3">
@@ -24,7 +35,15 @@ const Leftsidebar = () => {
           <Trash2 color='grey'/>
           <p>Trash</p>
           </div>
-          <p className='whitespace-nowrap mt-5'>View all Notes</p>
+          {clicked?<button className='flex gap-1 rounded-2xl p-1 items-center cursor-pointer hover:bg-gray-400'onClick={clickedHandler}>
+            <ArrowLeft color='gray'/>
+            <Link to="/"><p className='whitespace-nowrap'>Home</p></Link>
+          </button>:
+          <button className='flex gap-1 rounded-2xl p-1 items-center cursor-pointer hover:bg-gray-400'onClick={clickedHandler}>
+            <Link to="/viewall"><p className='whitespace-nowrap'>View all Notes</p></Link>
+            <ArrowRight color='gray'/>
+          </button>
+          }
         </div>
 
       </nav>
