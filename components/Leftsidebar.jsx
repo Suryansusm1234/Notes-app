@@ -32,7 +32,6 @@ const Leftsidebar = () => {
   }
 //Function for handaling the folder delete
   function folderdelete(prop){
-    console.log(prop.id);
     
     const {newArray , removedItem} = deleteFolder({folder : folder, id : prop.id})
     setfolder(newArray)

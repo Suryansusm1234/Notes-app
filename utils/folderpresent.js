@@ -24,7 +24,6 @@ const colourarray = [
 const hexgen = (prop)=>{ 
     const index = colourarray.findIndex(item => item.tailwind === prop)
     if (index === -1) {
-        console.error(`Color class ${prop} not found in colourarray.`);
         return { folderColor: '#FFFFFF', accentColor: '#CCCCCC' }; 
     }
     const data = {

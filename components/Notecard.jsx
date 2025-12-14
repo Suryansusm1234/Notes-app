@@ -3,7 +3,9 @@ import { useState } from "react";
 import { deleteNotes } from "../utils/Deletehandler";
 import { useContext } from 'react';
 import { RecentNotes } from '../context/Notes';
+import Addnote from "./Addnote";
 const NoteCard = (props) => {
+    const [addNote, setaddNote] = useState(false)
   const [hover, sethover] = useState(null)
   const ishover = hover === props.data.id
    const { notes , setNotes , settrash } = useContext(RecentNotes)
@@ -12,9 +14,15 @@ const NoteCard = (props) => {
    const {newArray ,removedItem} = deleteNotes({notes : notes , id : props.data.id})
    setNotes(newArray)
     settrash(prevTrash =>[removedItem,...prevTrash])
+  }
+
+  function edit(){
+   addNote?setaddNote(false):setaddNote(true)
     
   }
   return (
+    <>
+    {addNote ?<Addnote setaddNote={setaddNote} title= {props.data.title} content = {props.data.content} edit={true} id = {props.data.id}/> : ""}
     <div
       className=" relative
         bg-yellow-400 
@@ -39,7 +47,7 @@ const NoteCard = (props) => {
             {props.data.title}
           </h2>
 
-          <button className="cursor-pointer shrink-0 p-1 rounded-full hover:bg-yellow-300">
+          <button className="cursor-pointer shrink-0 p-1 rounded-full hover:bg-yellow-300" onClick={edit}>
             <PencilLine size="1rem" />
           </button>
         </div>
@@ -71,6 +79,7 @@ const NoteCard = (props) => {
         </div>
       )}
     </div>
+    </>
   );
 };
 export default NoteCard
