@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import Addfolder from './Addfolder';
 import { useContext } from 'react';
 import { RecentNotes } from '../context/Notes';
-import ListFolder from './ListFolder';
 
 const Leftsidebar = () => {
   const { folder } = useContext(RecentNotes)
@@ -12,6 +11,7 @@ const Leftsidebar = () => {
 
   const [clicked, setclicked] = useState(false)
   const [Showfolder, setshowfolder] = useState(false)
+  // Function for handling the page change
   function clickedHandler() {
     if (!clicked) {
       setclicked(true);
@@ -20,10 +20,9 @@ const Leftsidebar = () => {
     }
 
   }
-
+//Function for showing the create folder section
   function toggleshowfolder() {
     if (Showfolder) {
-      console.log(Showfolder);
 
       setshowfolder(false)
     } else {
