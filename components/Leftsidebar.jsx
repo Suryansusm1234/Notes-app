@@ -1,16 +1,17 @@
-import { FolderPlus, Trash2, ArrowRight, ArrowLeft, Circle } from 'lucide-react';
+import { FolderPlus, Trash2, ArrowRight, ArrowLeft,Trash } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Addfolder from './Addfolder';
 import { useContext } from 'react';
 import { RecentNotes } from '../context/Notes';
+import { deleteFolder } from '../utils/Deletehandler';
 
 const Leftsidebar = () => {
-  const { folder } = useContext(RecentNotes)
-  console.log(folder);
+  const { folder , setfolder } = useContext(RecentNotes)
 
   const [clicked, setclicked] = useState(false)
   const [Showfolder, setshowfolder] = useState(false)
+  const [hover, sethover] = useState(null)
   // Function for handling the page change
   function clickedHandler() {
     if (!clicked) {
@@ -29,6 +30,13 @@ const Leftsidebar = () => {
       setshowfolder(true)
     }
   }
+//Function for handaling the folder delete
+  function folderdelete(prop){
+    console.log(prop.id);
+    
+    const data = deleteFolder({folder : folder, id : prop.id})
+    setfolder(data)
+  }
   return (
     <>
       {Showfolder ? <Addfolder setshowfolder={setshowfolder} /> : ""}
@@ -40,18 +48,29 @@ const Leftsidebar = () => {
               <p className='whitespace-nowrap'>Add New</p>
             </button>
             <ul className='mt-3 mb-2'>
-              {folder.map((e) => {
+              {folder.map((e, index) => {
+                const hoverd = hover === e.id;
                 return (
-                  <li>
-                    <button className={`flex gap-2 ${e.colour} cursor-pointer   pl-2 pr-2 rounded-2xl`}>
+                  <li className='relative' key={e.id}  onMouseEnter={()=>sethover(e.id)} onMouseLeave={()=>sethover(null)} >
+                    <button className={`flex gap-2 ${e.colour} cursor-pointer   pl-2 pr-2 rounded-2xl`} >
                       <p >{e.title}</p>
                     </button>
+                  {hoverd && (
+                            <div 
+                                className="absolute right-0 top-1/2 transform -translate-y-1/2 cursor-pointer bg-red-200 rounded-2xl p-1" onClick={()=> folderdelete(e)}>
+                                <Trash 
+                                    color='red' 
+                                    size={18}
+                                    className=''
+                                />
+                            </div>
+                        )}
                   </li>
                 )
               })}
             </ul>
-            <div className='flex items-center gap-3 m-2 mt-5'>
-              <Trash2 color='grey' />
+            <div className='flex items-center gap-3  mt-5 cursor-pointer hover:bg-red-200 rounded-2xl pl-3'>
+              <Trash2 color='red' />
               <p>Trash</p>
             </div>
             {clicked ? <button className='flex gap-1 rounded-2xl p-1 items-center cursor-pointer hover:bg-gray-400' onClick={clickedHandler}>

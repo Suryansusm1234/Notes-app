@@ -22,7 +22,7 @@ const Addfolder = (props) => {
   const [title, setitle] = useState("")
   const [content, setcontent] = useState("")
   return (
-    <div className='fixed inset-0 flex justify-center items-center backdrop-brightness-50 '>
+    <div className='z-10 fixed inset-0 flex justify-center items-center backdrop-brightness-50 '>
     <div className={`${colour}  p-5 rounded-2xl shadow-2xl `}>
       <form action="" onSubmit={(e)=>{
         handlesubmit(e)
