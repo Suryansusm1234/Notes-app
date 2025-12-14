@@ -38,9 +38,8 @@ const Home = () => {
       <h1 className='text-2xl font-medium'>Recent Folder</h1>
        <div className=' flex justify-between gap-7 items-center p-4'>
         <div className=' flex gap-2 overflow-hidden '>
-          {folder.map((e, index) => {
+          {folder.map((e) => {
             const data = hexgen(e.colour)
-            console.log(data);
             return (
                   <Folder name={e.title} key={e.id} folderColor={data.folderColor} accentColor={data.accentColor} />)
           })}

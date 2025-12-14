@@ -6,10 +6,12 @@ import { RecentNotes } from '../context/Notes';
 const NoteCard = (props) => {
   const [hover, sethover] = useState(null)
   const ishover = hover === props.data.id
-   const { notes , setNotes } = useContext(RecentNotes)
-  function Delete(){
-   const data = deleteNotes({notes : notes , id : props.data.id})
-   setNotes(data)
+   const { notes , setNotes , settrash } = useContext(RecentNotes)
+  //Function for handaling the delete Operation of the notes
+   function Delete(){
+   const {newArray ,removedItem} = deleteNotes({notes : notes , id : props.data.id})
+   setNotes(newArray)
+    settrash(prevTrash =>[removedItem,...prevTrash])
     
   }
   return (

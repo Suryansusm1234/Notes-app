@@ -5,7 +5,7 @@ import Leftsidebar from '../components/Leftsidebar';
 import { Routes, Route } from 'react-router-dom';
 import Viewall from '../pages/Viewall';
 import Home from '../pages/Home';
-import Trash from '../components/Trash';
+import Trash from '../pages/Trash';
 
 
 const App = () => {

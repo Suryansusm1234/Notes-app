@@ -7,7 +7,7 @@ import { RecentNotes } from '../context/Notes';
 import { deleteFolder } from '../utils/Deletehandler';
 
 const Leftsidebar = () => {
-  const { folder , setfolder } = useContext(RecentNotes)
+  const { folder , setfolder , trash , settrash  } = useContext(RecentNotes)
 
   const [clicked, setclicked] = useState(false)
   const [Showfolder, setshowfolder] = useState(false)
@@ -34,8 +34,11 @@ const Leftsidebar = () => {
   function folderdelete(prop){
     console.log(prop.id);
     
-    const data = deleteFolder({folder : folder, id : prop.id})
-    setfolder(data)
+    const {newArray , removedItem} = deleteFolder({folder : folder, id : prop.id})
+    setfolder(newArray)
+    if(removedItem != null){
+      settrash(prevTrash =>[removedItem,...prevTrash])
+    }
   }
   return (
     <>
