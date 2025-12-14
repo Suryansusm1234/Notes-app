@@ -5,6 +5,7 @@ import Leftsidebar from '../components/Leftsidebar';
 import { Routes, Route } from 'react-router-dom';
 import Viewall from '../pages/Viewall';
 import Home from '../pages/Home';
+import Trash from '../components/Trash';
 
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
           <Routes>
             <Route index element={<Home />} />
             <Route path='viewall' element={<Viewall />} />
+            <Route path='trash' element={<Trash />} />
           </Routes>
 
         </div>

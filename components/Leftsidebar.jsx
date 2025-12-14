@@ -71,7 +71,7 @@ const Leftsidebar = () => {
             </ul>
             <div className='flex items-center gap-3  mt-5 cursor-pointer hover:bg-red-200 rounded-2xl pl-3'>
               <Trash2 color='red' />
-              <p>Trash</p>
+              <Link to="/trash">Trash</Link>
             </div>
             {clicked ? <button className='flex gap-1 rounded-2xl p-1 items-center cursor-pointer hover:bg-gray-400' onClick={clickedHandler}>
               <ArrowLeft color='gray' />
