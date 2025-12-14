@@ -24,7 +24,7 @@ const colourarray = [
 const hexgen = (prop)=>{ 
     const index = colourarray.findIndex(item => item.tailwind === prop)
     if (index === -1) {
-        return { folderColor: '#FFFFFF', accentColor: '#CCCCCC' }; 
+        return { folderColor: '#f2e9e9', accentColor: '#CCCCCC' }; 
     }
     const data = {
         folderColor: colourarray[index].folderColor,

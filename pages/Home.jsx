@@ -18,7 +18,7 @@ const Home = () => {
      {Showfolder ? <Addfolder setshowfolder={setshowfolder} /> : ""}
       <h1 className='text-2xl font-medium '>Recent Notes</h1>
       <div className=' flex justify-evenly gap-7 items-center p-4'>
-        <div className=' flex gap-2 overflow-hidden '>
+        <div className=' flex gap-2 overflow-x-auto '>
           {notes.map((e, index) => {
             {
               if (index < 3) {

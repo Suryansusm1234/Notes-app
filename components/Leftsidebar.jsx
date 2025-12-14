@@ -42,7 +42,7 @@ const Leftsidebar = () => {
   return (
     <>
       {Showfolder ? <Addfolder setshowfolder={setshowfolder} /> : ""}
-      <aside className="h-screen">
+      <aside className="h-[90vh]">
         <nav className="h-full flex flex-col bg-white   p-5 mr-3">
           <div className="flex-1 px-3">
             <button className='flex justify-center items-center gap-2 cursor-pointer' onClick={toggleshowfolder}>
